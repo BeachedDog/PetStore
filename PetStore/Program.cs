@@ -19,7 +19,7 @@ class Program
         Console.WriteLine("Type 'exit' to quit.");
 
         string userInput = Console.ReadLine();
-        bool kittenFoodBool = false;
+        
 
         while (userInput.ToLower() != "exit")
         {
@@ -44,22 +44,14 @@ class Program
                 double weightPounds = double.Parse(Console.ReadLine());
 
                 Console.WriteLine("is this cat food??");
-                var kittenFood = Console.ReadLine();
-                if (kittenFood.ToLower() == "yes")
-                {
-                     kittenFoodBool = true;
-                }
-                else
-                {
-                    kittenFoodBool = false;
-                }
-
+                bool kittenFood = Console.ReadLine().ToLower()=="yes";
+               
                 catFood.Name = name;
                 catFood.Price = price;
                 catFood.Quantity = quantity;
                 catFood.Description= description;
                 catFood.WeightPounds = weightPounds;
-                catFood.KittenFood = kittenFoodBool;
+                catFood.KittenFood = kittenFood;
 
                 productLogic.AddProduct(catFood);
                 Console.WriteLine("twas added muh lord");
