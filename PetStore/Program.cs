@@ -15,6 +15,7 @@ class Program
 
         Console.WriteLine("Press 1 to add a product.");
         Console.WriteLine("Press 2 to retrieve a specific cat food.");
+        Console.WriteLine("Press 3 to see the names of all in stock products.");
         Console.WriteLine("Type 'exit' to quit.");
 
         string userInput = Console.ReadLine();
@@ -22,9 +23,10 @@ class Program
 
         while (userInput.ToLower() != "exit")
         {
-            if (userInput.ToLower() == "1")
+            switch (userInput.ToLower())
             {
-                CatFood catFood = new CatFood();
+                case "1":
+                    CatFood catFood = new CatFood();
 
                 Console.WriteLine("What is the name?");
                 var name = Console.ReadLine();
@@ -61,12 +63,21 @@ class Program
 
                 productLogic.AddProduct(catFood);
                 Console.WriteLine("twas added muh lord");
-            }
-            else if (userInput == "2")
-            {
+                    break;
+
+                case "2":
                 Console.WriteLine("Please enter the name of the food you would like to retrieve.");
                 userInput = Console.ReadLine();
                 Console.WriteLine(productLogic.GetCatFoodByName(userInput));
+                break;
+
+                case "3":
+                Console.WriteLine("Here are the names of all in stock products:");
+                foreach (var product in productLogic.GetOnlyInStockProducts())
+                    {
+                        Console.WriteLine(product);
+                    }
+                    break;
 
             }
             Console.WriteLine("Press 1 to add a product");
