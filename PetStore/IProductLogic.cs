@@ -14,6 +14,8 @@ namespace PetStore
 
         public CatFood GetCatFoodByName(string name);
 
-        public List<string> GetOnlyInStockProducts();
+        public List<Product> GetOnlyInStockProducts();
+
+        public decimal GetTotalPriceOfInventory();
     }
 }
