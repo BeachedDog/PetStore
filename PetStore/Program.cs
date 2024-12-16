@@ -5,6 +5,7 @@ using static PetStore.CatFood;
 using PetStore;
 using System.Text.Json;
 using static PetStore.ProductLogic;
+using static PetStore.UILogic;
 
 namespace PetStore;
 
@@ -17,44 +18,15 @@ class Program
 
         while (userInput.ToLower() != "exit")
         {
-            
-            Console.WriteLine("Press 1 to add a product.");
-            Console.WriteLine("Press 2 to retrieve a specific cat food.");
-            Console.WriteLine("Press 3 to see the names of all in stock products.");
-            Console.WriteLine("Press 4 to see the total price of all products in stock.");
-            Console.WriteLine("Type 'exit' to quit.");
+            UILogic.PrintMenu();
+            userInput = Console.ReadLine();
 
-           userInput = Console.ReadLine();
-
-            switch (userInput.ToLower())
-            {
-                case "1":
-                CatFood catFood =  new CatFood();
-                catFood = catFood.CreateNewCatFood();
-                productLogic.AddProduct(catFood);
-                Console.WriteLine("twas added muh lord");
-                break;
-
-                case "2":
-                Console.WriteLine("Please enter the name of the food you would like to retrieve.");
-                userInput = Console.ReadLine();
-                Console.WriteLine(productLogic.GetCatFoodByName(userInput));
-                break;
-
-                case "3":
-                Console.WriteLine("Here are the names of all in stock products:");
-                foreach (var product in productLogic.GetOnlyInStockProducts())
-                    {
-                        Console.WriteLine(product.Name);
-                    }
-                    break;
-                case "4":
-                Console.WriteLine($"The total amount of all products in stock is: {productLogic.GetTotalPriceOfInventory()}");
-                break;
-
-            }
-
+            // TODO: add the logic that actually runs the program after the printing of the menu. 
+            //I am currently in the middle of changing the INewProduct interface to be a generic so that I can add the DogLeash and CatFood products in the same way. 
+            //I think i have done this successfully. The next step would be to add the logic for the switch statement in UILogic that would allow you to choose whether.
+            //your product is a CatFood or a DogLeash.
         }
 
     }
-}
+
+    }

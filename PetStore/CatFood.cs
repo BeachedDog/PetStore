@@ -6,11 +6,11 @@ using System.Threading.Tasks;
 
 namespace PetStore
 {
-    public class CatFood:Product
+    public class CatFood:Product, INewProduct<CatFood>
     {
         public double WeightPounds { get; set; }
         public bool KittenFood { get; set; }
-        public CatFood CreateNewCatFood()
+        public CatFood CreateNewProduct()
         { 
             CatFood catFood = new CatFood();
             List<string> catFoodQuestions = new List<string>
@@ -27,16 +27,12 @@ namespace PetStore
                 }
             
 
-            // TODO write the logic that will convedrt the catfoodanswers into the catfood object below
-
             catFood.Name = catFoodAnswers["Name"];
             catFood.Price = decimal.Parse(catFoodAnswers["Price"]);
             catFood.Quantity = int.Parse(catFoodAnswers["Quantity"]);
             catFood.Description = catFoodAnswers["Description"];
             catFood.WeightPounds = double.Parse(catFoodAnswers["WeightPounds"]);
-            catFood.KittenFood = catFoodAnswers["KittenFood"]== "yes"? true :false;
-
-            Console.WriteLine(catFood.Name);
+            catFood.KittenFood = catFoodAnswers["KittenFood"] == "yes" ? true : false;
 
             return catFood;
         }
