@@ -9,6 +9,7 @@ namespace PetStore
 {
     internal class ProductLogic : IProductLogic
     {
+        
         private List<Product> _products;
         private Dictionary<string, DogLeash> _dogLeash;
         private Dictionary<string, CatFood> _catFood;
@@ -43,19 +44,6 @@ namespace PetStore
         {
             return _products;
         }
-        public CatFood GetCatFoodByName(string name)
-        {
-            try
-            {
-
-                return _catFood[name];
-
-            }
-            catch (KeyNotFoundException)
-            {
-                return null;
-            }
-        }
 
         public List<Product> GetOnlyInStockProducts()
         {
@@ -66,6 +54,9 @@ namespace PetStore
         {
             return _products.InStock().Select(p => p.Price).Sum();
         }
-
+        public string GetProductByName(string name)
+        {
+            return _products.GatherProductsByNameIntoList(name).Select(p=>p.Name).ToString();
+        }
     }
 }

@@ -11,7 +11,15 @@ namespace PetStore
     {
         public static List<T> InStock<T>(this List<T> list) where T : Product
         {
-            return list.Where(x => x.Quantity > 0).ToList();             
+            return list.Where(x => x.Quantity > 0).ToList();
+        }
+
+        public static List<T> GatherProductsByNameIntoList<T>(this List<T> list, string name) where T : Product
+        
+            {
+                return list.Where(x => x.Name == name).ToList();
+            }
+            
         }
     }
-}
+
